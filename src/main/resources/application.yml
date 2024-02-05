@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:h2:~/cartDB
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+server:
+  port: 8081
