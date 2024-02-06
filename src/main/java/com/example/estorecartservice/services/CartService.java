@@ -33,52 +33,39 @@ public class CartService {
             return cartRepo.findById(id);
     }
 
-//    public Boolean changeProductQty(Cart cart, Long id){
-//        Optional<Cart> c = cartRepo.findById(id);
-//        if (c.isPresent()){
-//            List<Product> productList = c.get().getProductList();
-//            Product existingProduct = productList.contains(cart.getProductList().get());
 //
 //
-//            return true;
-//        }
-//        else
+//    public Boolean updateProductQuantity(Long cartId, Long productId, int newQuantity) {
+//        Optional<Cart> optionalCart = cartRepo.findById(cartId);
+//
+//        if (optionalCart.isPresent()) {
+//            Cart cart = optionalCart.get();
+//
+//            // Find the product in the cart
+//            Optional<Product> optionalProduct = cart.getProductList().stream()
+//                    .filter(product -> product.getProductId().equals(productId))
+//                    .findFirst();
+//
+//            if (optionalProduct.isPresent()) {
+//                Product productToUpdate = optionalProduct.get();
+//                productToUpdate.setOrderQuantity(newQuantity);
+//
+//                // Update the total price of the cart
+//                 cart.setTotalPrice(calculateTotalPrice(cart.getProductList()));
+//
+//                // Save the updated cart
+//                cartRepo.save(cart);
+//                return true;
+//            } else {
+//                // Product not found in the cart
+//                return false;
+//            }
+//        } else {
+//            // Cart not found
 //            return false;
+//        }
 //    }
-
-    public Boolean updateProductQuantity(Long cartId, Long productId, int newQuantity) {
-        Optional<Cart> optionalCart = cartRepo.findById(cartId);
-
-        if (optionalCart.isPresent()) {
-            Cart cart = optionalCart.get();
-
-            // Find the product in the cart
-            Optional<Product> optionalProduct = cart.getProductList().stream()
-                    .filter(product -> product.getProductId().equals(productId))
-                    .findFirst();
-
-            if (optionalProduct.isPresent()) {
-                Product productToUpdate = optionalProduct.get();
-                productToUpdate.setOrderQuantity(newQuantity);
-
-                // Update the total price of the cart
-                 cart.setTotalPrice(calculateTotalPrice(cart.getProductList()));
-
-                // Save the updated cart
-                cartRepo.save(cart);
-                return true;
-            } else {
-                // Product not found in the cart
-                return false;
-            }
-        } else {
-            // Cart not found
-            return false;
-        }
-    }
-
-    // Example method to calculate the total price of the cart based on product prices and quantities
-    // You may need to adjust this based on your specific business logic
+//
     private BigDecimal calculateTotalPrice(List<Product> productList) {
         return productList.stream()
                 .map(product -> product.getPricePerUnit().multiply(BigDecimal.valueOf(product.getOrderQuantity())))

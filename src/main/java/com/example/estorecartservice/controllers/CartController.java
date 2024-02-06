@@ -49,25 +49,25 @@ public class CartController {
 //            return  new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 //        }
     }
-
-    @PutMapping("/updateQuantity/{cartId}/product/{productId}")
-    public ResponseEntity<Void> updateProductQuantity(
-            @PathVariable Long cartId,
-            @PathVariable Long productId,
-            @RequestParam int newQuantity
-    ) {
-        try {
-            boolean success = cartService.updateProductQuantity(cartId, productId, newQuantity);
-
-            if (success) {
-                return new ResponseEntity<>(HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//
+//    @PutMapping("/updateQuantity/{cartId}/product/{productId}")
+//    public ResponseEntity<Void> updateProductQuantity(
+//            @PathVariable Long cartId,
+//            @PathVariable Long productId,
+//            @RequestParam int newQuantity
+//    ) {
+//        try {
+//            boolean success = cartService.updateProductQuantity(cartId, productId, newQuantity);
+//
+//            if (success) {
+//                return new ResponseEntity<>(HttpStatus.OK);
+//            } else {
+//                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//            }
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteCart (@PathVariable Long id){

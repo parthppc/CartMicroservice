@@ -1,16 +1,12 @@
 spring:
   datasource:
-    url: jdbc:h2:~/cartDB
-    username: sa
-    password:
-
-  h2:
-    console:
-      enabled: true
+    url: jdbc:mysql://db-mysql-cart-microservice-do-user-15773796-0.c.db.ondigitalocean.com:25060/defaultdb?sslMode=REQUIRED
+    username: doadmin
+    password: AVNS_SzbJkllAsg6YUP5VnK7
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
-    generate-ddl: true
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     show-sql: true
 
 server:

@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Cart {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cartId;
 
     private BigDecimal totalPrice;
@@ -24,7 +24,7 @@ public class Cart {
     @Transient
     private  Instant instant = Instant.now();
 
-    @OneToMany(cascade = CascadeType.ALL)
-    List<Product> productList;
+    @OneToMany(mappedBy = "cart")
+    private List<CartProduct> cartProducts;
 
 }
